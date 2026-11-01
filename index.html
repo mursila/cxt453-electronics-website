@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reloop – Electronics built to last</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceee8;--surface:#f8f9f5;--ink:#15211c;--mute:#55635c;--line:#cfd5cc;--blue:#2c4bff;--onblue:#fff;--hi:#f1e94a;--onhi:#15211c;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121815;--surface:#1b2420;--ink:#eef2ec;--mute:#a3b0a8;--line:#2f3b35;--blue:#8da0ff;--onblue:#10152e;--hi:#f1e94a;--onhi:#15211c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121815;--surface:#1b2420;--ink:#eef2ec;--mute:#a3b0a8;--line:#2f3b35;--blue:#8da0ff;--onblue:#10152e;--hi:#f1e94a;--onhi:#15211c;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-weight:800;line-height:1.05;letter-spacing:-.02em;margin:0}
+p{margin:0;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:11}
+.logo{font-weight:800;font-size:1.35rem;text-decoration:none;letter-spacing:-.03em}
+.logo i{display:inline-block;width:.8em;height:.8em;border:.2em solid var(--blue);border-radius:50%;margin-right:.3em;vertical-align:-.02em}
+nav{display:flex;gap:18px;font-weight:600;font-size:.95rem}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+.cart{background:var(--ink);color:var(--bg);border:0;border-radius:99px;padding:8px 16px;font:600 .9rem inherit;font-family:inherit;cursor:pointer}
+@media(max-width:640px){nav{display:none}}
+section{padding:64px 0}
+.hero{padding:48px 0 56px}
+.hero h1{font-size:clamp(2.4rem,9vw,5.2rem);max-width:12ch}
+.hero .lead{margin-top:18px;font-size:1.15rem;color:var(--mute)}
+.meter{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.meter label{font-weight:600;display:block;margin-bottom:10px}
+.meter output{color:var(--blue);font-weight:800}
+input[type=range]{width:100%;accent-color:var(--blue);height:32px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.stat{background:var(--bg);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:1.9rem;line-height:1.1;letter-spacing:-.02em}
+.stat span{color:var(--mute);font-size:.88rem}
+.stat.hl{background:var(--hi);color:var(--onhi)}
+.stat.hl span{color:var(--onhi)}
+.btn{display:inline-block;background:var(--blue);color:var(--onblue);border:0;border-radius:12px;padding:12px 20px;font:600 1rem inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+h2{font-size:clamp(1.9rem,5vw,3rem)}
+.sub{color:var(--mute);margin-top:10px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}
+.chip{border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:7px 16px;font:600 .9rem inherit;font-family:inherit;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.card .art{background:var(--bg);display:grid;place-items:center;height:170px;margin:10px;border-radius:12px}
+.card .art svg{width:110px;height:110px}
+.card .body{padding:6px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:1.2rem}
+.card p{color:var(--mute);font-size:.92rem}
+.score{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600}
+.bar{flex:1;height:8px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue)}
+.price{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+.price b{font-size:1.3rem}
+.price s{color:var(--mute);font-size:.85rem;margin-left:6px}
+.add{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:9px 14px;font:600 .9rem inherit;font-family:inherit;cursor:pointer}
+.tag{align-self:flex-start;background:var(--hi);color:var(--onhi);border-radius:6px;padding:2px 8px;font-size:.78rem;font-weight:600}
+.why{background:var(--ink);color:var(--bg)}
+.why .sub{color:var(--bg);opacity:.75}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:32px}
+.pillars h3{font-size:1.25rem;margin-bottom:8px}
+.pillars p{opacity:.85}
+.trade{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:800px){.trade{grid-template-columns:1fr 1fr;align-items:start}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:grid;gap:14px}
+.panel label{font-weight:600;font-size:.92rem;display:grid;gap:6px}
+select{font:inherit;padding:11px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.result{background:var(--hi);color:var(--onhi);border-radius:12px;padding:16px}
+.result b{font-size:2rem;display:block;line-height:1.1}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;opacity:0;transition:.25s;pointer-events:none;z-index:20;font-weight:600}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top"><i></i>Reloop</a>
+  <nav aria-label="Main"><a href="#shop">Shop</a><a href="#why">Why Reloop</a><a href="#trade">Trade-in</a></nav>
+  <button class="cart" id="cart" aria-label="Cart">Cart (<span id="count">0</span>)</button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <h1>Keep your phone for five years.</h1>
+  <p class="lead">Reloop sells phones, laptops and audio that are repairable, upgradeable and backed by a 5-year guarantee. Drag the slider to see what longer use saves.</p>
+  <div class="meter">
+    <label for="yrs">I keep my phone for <output id="yout">5 years</output></label>
+    <input type="range" id="yrs" min="2" max="8" value="5" step="1">
+    <div class="stats">
+      <div class="stat hl"><b id="s1">0 kg</b><span>CO₂ avoided over 10 years</span></div>
+      <div class="stat"><b id="s2">0</b><span>phones you won't need to buy</span></div>
+    </div>
+  </div>
+  <div class="cta-row"><a class="btn" href="#shop">Shop the range</a><a class="btn ghost" href="#trade">Trade in your old device</a></div>
+</div></section>
+
+<section id="shop" style="padding-top:24px"><div class="wrap">
+  <h2>Built to be fixed, not binned</h2>
+  <p class="sub">Every product shows its repairability score so you can compare what lasts.</p>
+  <div class="filters" role="group" aria-label="Filter products" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="why" id="why"><div class="wrap">
+  <h2>Less waste, same great tech</h2>
+  <p class="sub">Reloop supports UN Sustainable Development Goal 12: responsible consumption and production.</p>
+  <div class="pillars">
+    <div><h3>Repair first</h3><p>Screws, not glue. Batteries and screens swap in minutes, and we publish every spare part price.</p></div>
+    <div><h3>Honest claims</h3><p>Each product page lists its materials, recycled content and expected lifespan, with no vague green labels.</p></div>
+    <div><h3>Take-back for everything</h3><p>Send any old electronics back free. We refurbish what works and recycle the rest through certified partners.</p></div>
+  </div>
+</div></section>
+
+<section id="trade"><div class="wrap trade">
+  <div>
+    <h2>What's your old device worth?</h2>
+    <p class="sub">Get an instant estimate as store credit. Free pickup, data wiped and certified.</p>
+  </div>
+  <div class="panel">
+    <label>Device<select id="dev"><option value="180">Phone</option><option value="260">Laptop</option><option value="70">Earbuds</option><option value="90">Smartwatch</option></select></label>
+    <label>Condition<select id="cond"><option value="1">Like new</option><option value="0.6">Used, works well</option><option value="0.3">Cracked or worn</option><option value="0.1">Not working</option></select></label>
+    <div class="result" aria-live="polite"><span>Estimated credit</span><b id="est">$180</b></div>
+    <button class="btn" id="tbtn">Start trade-in</button>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Reloop. Concept website for CXT453, SDG 12.</span><span>Prices are sample values.</span></div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var P=[
+{n:"Loop One Phone",c:"Phones",t:"phone",d:"6.1-inch OLED, swappable battery, 7 years of updates.",p:499,o:649,r:9,tag:"Best seller"},
+{n:"Loop Lite Phone",c:"Phones",t:"phone",d:"Compact, rugged and refurbished-grade parts.",p:279,o:349,r:8},
+{n:"Frame 14 Laptop",c:"Laptops",t:"laptop",d:"Modular ports, upgradeable RAM and storage.",p:899,o:1099,r:10,tag:"Upgradeable"},
+{n:"Frame Air 13",c:"Laptops",t:"laptop",d:"Recycled aluminium body, 16-hour battery.",p:749,o:849,r:8},
+{n:"Echo Buds",c:"Audio",t:"buds",d:"Replaceable cells and ear tips, 30-hour case.",p:89,o:119,r:7},
+{n:"Pulse Watch",c:"Wearables",t:"watch",d:"Solar-assisted strap, fixable with one screwdriver.",p:159,o:199,r:8,tag:"New"}
+];
+var cats=["All","Phones","Laptops","Audio","Wearables"],cur="All",n=0;
+function art(t){
+var s='stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+var m={phone:'<rect x="34" y="10" width="52" height="100" rx="10"/><line x1="52" y1="98" x2="68" y2="98"/>',
+laptop:'<rect x="22" y="28" width="76" height="52" rx="5"/><path d="M10 92h100l-6 8H16z"/>',
+buds:'<circle cx="38" cy="42" r="14"/><path d="M44 54v30a6 6 0 0 1-12 0"/><circle cx="82" cy="42" r="14"/><path d="M76 54v30a6 6 0 0 0 12 0"/>',
+watch:'<rect x="36" y="34" width="48" height="52" rx="12"/><path d="M44 34l4-24h24l4 24M44 86l4 24h24l4-24"/><path d="M60 50v12l8 5"/>'};
+return '<svg viewBox="0 0 120 120" '+s+' aria-hidden="true" style="color:var(--blue)">'+m[t]+'</svg>';}
+function chips(){var f=document.getElementById("filters");f.innerHTML="";cats.forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c===cur);b.onclick=function(){cur=c;chips();list()};f.appendChild(b)})}
+function list(){var g=document.getElementById("grid");g.innerHTML="";P.filter(function(x){return cur==="All"||x.c===cur}).forEach(function(x,i){
+var d=document.createElement("article");d.className="card";
+d.innerHTML='<div class="art">'+art(x.t)+'</div><div class="body">'+(x.tag?'<span class="tag">'+x.tag+'</span>':'')+'<h3>'+x.n+'</h3><p>'+x.d+'</p><div class="score"><span>Repairability</span><div class="bar"><i style="width:'+x.r*10+'%"></i></div><span>'+x.r+'/10</span></div><div class="price"><span><b>$'+x.p+'</b><s>$'+x.o+'</s></span><button class="add" data-i="'+i+'">Add to cart</button></div></div>';
+g.appendChild(d)});
+g.querySelectorAll(".add").forEach(function(b){b.onclick=function(){n++;document.getElementById("count").textContent=n;toast("Added to cart")}})}
+var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},1800)}
+function meter(){var y=+document.getElementById("yrs").value;document.getElementById("yout").textContent=y+" years";
+var phones=Math.ceil(10/y);document.getElementById("s2").textContent=Math.max(0,Math.ceil(10/2)-phones)+" fewer";
+document.getElementById("s1").textContent=Math.round((5-phones)*70)+" kg"}
+function est(){var v=Math.round(document.getElementById("dev").value*document.getElementById("cond").value);document.getElementById("est").textContent="$"+v}
+document.getElementById("yrs").oninput=meter;
+document.getElementById("dev").onchange=est;document.getElementById("cond").onchange=est;
+document.getElementById("tbtn").onclick=function(){toast("Trade-in started. Check your email for a free pickup label.")};
+document.getElementById("cart").onclick=function(){toast(n?n+" item(s) in your cart":"Your cart is empty. Add a product from the shop.")};
+chips();list();meter();est();
+</script>
+</body>
+</html>
